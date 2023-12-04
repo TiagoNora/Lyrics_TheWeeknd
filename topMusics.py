@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
 
@@ -7,7 +8,7 @@ URL_SPOTIFY_MARKETS = URL_SPOTIFY_BASE + "markets"
 
 URL_SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
 
-URL_TRACKS = URL_SPOTIFY_BASE + 'artists/0TnOYISbd1XYRBk9myaseg/top-tracks'
+URL_TRACKS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/top-tracks'
 
 data = {
     "grant_type": "client_credentials",
@@ -35,9 +36,19 @@ for market in markets:
     data = {
         "market": market
     }
-    responseTracks = requests.get(URL_TRACKS, data=data)
+    responseTracks = requests.get(URL_TRACKS, params=data, headers=headers)
     responseJSON = responseTracks.json()
     tracks = responseJSON.get('tracks')
     for track in tracks:
-        name = track.get('name')
-        lista.append(name)
+        temp = {}
+        temp['name'] = track.get('name')
+        print(temp['name'])
+        temp['market'] = market
+        print(temp['market'])
+        temp['popularity'] = track.get('popularity')
+        print(temp['popularity'])
+        lista.append(temp)
+
+
+df = pd.DataFrame(lista)
+df.to_csv("topMusics.csv", index=False)
