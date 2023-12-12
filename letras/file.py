@@ -98,12 +98,37 @@ for result in results:
         print(albumNome)
         tdi['trackID'] = trackID
         print(trackID)
+        try:
+            URL_FEATURES = URL_SPOTIFY_BASE + "audio-features/" + trackID
+            responseFeatures = requests.get(URL_FEATURES, headers=headers)
+            json = responseFeatures.json()
+            tdi['acousticness'] = json.get('acousticness')
+            print(tdi['acousticness'])
+            tdi['danceability'] = json.get('danceability')
+            print(tdi['danceability'])
+            tdi['duration'] = json.get('duration')
+            print(tdi['duration'])
+            tdi['energy'] = json.get('energy')
+            print(tdi['energy'])
+            tdi['loudness'] = json.get('loudness')
+            print(tdi['loudness'])
+            tdi['valence'] = json.get('valence')
+            print(tdi['valence'])
+        except:
+            tdi['acousticness'] = None
+            tdi['danceability'] = None
+            tdi['duration'] = None
+            tdi['energy'] = None
+            tdi['loudness'] = None
+            tdi['valence'] = None
+
     except:
-        continue
+        tdi['album'] = None
+        tdi['trackID'] = None
     
 
     lista.append(tdi)
 
 df = pd.DataFrame(lista)
-df.to_csv("./dadosToSpotify.csv", index=False)
+df.to_csv("./letras/dadosToSpotify.csv", index=False)
 
