@@ -1,0 +1,109 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import urllib.parse
+
+
+url = 'https://www.letras.mus.br/the-weeknd/mais_acessadas.html'
+response = requests.get(url)
+
+lista = []
+
+URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
+
+URL_SPOTIFY_MARKETS = URL_SPOTIFY_BASE + "markets"
+
+URL_SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
+
+URL_TRACKS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/top-tracks'
+
+data = {
+    "grant_type": "client_credentials",
+    "client_id": "8aa217ba6aa641ba9999fc9383cfe260",
+    "client_secret": "0e8f0ab115e24fdba239455799da14f1"
+}
+
+responseToken = requests.post(URL_SPOTIFY_TOKEN, data=data)
+
+token = responseToken.json().get('access_token')
+
+headers = {
+    'Authorization': 'Bearer {}'.format(token)
+}
+
+
+soup = BeautifulSoup(response.text, 'html.parser')
+results = soup.find_all('li', class_='songList-table-row --song isVisible')
+
+def remove(original_string):
+    index = original_string.find("(")
+    if index != -1:
+        result_string = original_string[:index]
+        return result_string
+    else:
+        return original_string
+    
+
+for result in results:
+    tdi = {}
+    letra = ''
+         
+    link = result.find('a')
+    span_element = result.find('span')
+
+
+    urlMusica = 'https://www.letras.mus.br' + link['href']
+    responseMusica = requests.get(urlMusica)
+    soup = BeautifulSoup(responseMusica.text, 'html.parser')
+    resultsMusica = soup.find_all('div', class_='lyric-original')
+
+    for element in resultsMusica:
+        paragraphs = element.find_all('p')
+        for paragraph in paragraphs:
+            p_with_space = paragraph.get_text(separator=' ') + ' '
+            letra += p_with_space
+    
+    tdi['href'] = link['href']
+    print(link['href'])
+
+    tdi['letra'] = letra
+    print(letra)
+
+
+    nome = span_element.get_text()
+
+    result = remove(nome)
+
+
+    tdi['nome'] = result
+
+    a = result
+
+    result = a.replace("'", "").replace("’", "")
+    print(result)
+
+    dataQuery={
+        'q': "track:" + result + "artist:The%20Weeknd",
+        'type': 'track'
+    }
+
+    URL_TRACK = URL_SPOTIFY_BASE + "search?q=track:" + result + "%20" + "artist:The%20Weeknd&type=track"
+    try:
+        responseTrack = requests.get(URL_TRACK, headers=headers)
+        print(responseTrack.url)
+        item = responseTrack.json().get('tracks').get('items')
+        albumNome = item[0].get('album').get('name')
+        trackID = item[0].get('id')
+        tdi['album'] = albumNome
+        print(albumNome)
+        tdi['trackID'] = trackID
+        print(trackID)
+    except:
+        continue
+    
+
+    lista.append(tdi)
+
+df = pd.DataFrame(lista)
+df.to_csv("./dadosToSpotify.csv", index=False)
+
