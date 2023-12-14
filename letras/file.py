@@ -106,7 +106,7 @@ for result in results:
             print(tdi['acousticness'])
             tdi['danceability'] = json.get('danceability')
             print(tdi['danceability'])
-            tdi['duration'] = json.get('duration')
+            tdi['duration'] = json.get('duration_ms')
             print(tdi['duration'])
             tdi['energy'] = json.get('energy')
             print(tdi['energy'])
@@ -130,5 +130,10 @@ for result in results:
     lista.append(tdi)
 
 df = pd.DataFrame(lista)
-df.to_csv("./letras/dadosToSpotify.csv", index=False)
+df['contagem_XO'] = df['letra'].str.count('XO')
+
+duplicate_mask = df.duplicated(subset='nome', keep=False)
+new = df[~duplicate_mask]
+
+new.to_csv("./letras/tabelaTheWeeknd.csv", index=False)
 
