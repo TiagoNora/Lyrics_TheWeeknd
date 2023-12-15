@@ -131,9 +131,7 @@ for result in results:
 
 df = pd.DataFrame(lista)
 df['contagem_XO'] = df['letra'].str.count('XO')
+df.dropna(subset=['trackID'])
 
-duplicate_mask = df.duplicated(subset='nome', keep=False)
-new = df[~duplicate_mask]
-
-new.to_csv("./letras/tabelaTheWeeknd.csv", index=False)
+df.to_csv("./letras/tabelaTheWeeknd.csv", index=False)
 
