@@ -79,4 +79,4 @@ for market in markets:
         tabela.append(tdi)
 
 df = pd.DataFrame(tabela)
-df.to_csv("tabelaAlbuns.csv", index=False)
+df.to_csv("./albuns/tabelaAlbuns.csv", index=False)
