@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(dotenv_path="./v.env")
 import os
 
 URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
@@ -15,8 +15,10 @@ URL_TRACKS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/top-tracks'
 
 URL_ALBUNS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/albums'
 
+print(os.environ.get("grant_type"))
+
 data = {
-    "grant_type": os.environ.get("client_credentials"),
+    "grant_type": os.environ.get("grant_type"),
     "client_id": os.environ.get("client_id"),
     "client_secret": os.environ.get("client_secret")
 }
@@ -51,21 +53,21 @@ print(albunsJson)
 
 albuns = []
 
+
 lista = [
     'Deluxe',
     'Live At SoFi Stadium',
-    '(Alternate World)',
-    'Avatar: The Way of Water (Original Motion Picture Soundtrack)'
-
+    'Alternate World',
+    'Avatar: The Way of Water (Original Motion Picture Soundtrack)',
 ]
 
 for album in albunsJson:
+    print(album.get('name'))
     tdi = {}
-    if any(album.get('name') in s for s in lista):
+    if any(item in album.get('name') for item in lista):
         continue
     tdi['id'] = album.get('id')
     tdi['name'] = album.get('name')
-    print(album.get('name'))
     albuns.append(tdi)
 print(albuns)
 

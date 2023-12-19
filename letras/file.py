@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import urllib.parse
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(dotenv_path="./v.env")
 import os
 
 

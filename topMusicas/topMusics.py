@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(dotenv_path="./v.env")
 import os
 
 URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
