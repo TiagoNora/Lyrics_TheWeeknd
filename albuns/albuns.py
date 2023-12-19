@@ -68,6 +68,8 @@ for market in markets:
         URL = URL_SPOTIFY_BASE + "albums/" + album.get('id')
         r = requests.get(URL,headers=headers, params=data)
         print(r.text)
+        tdi['name'] = album.get('name')
+        print(album.get('name'))
         tdi['total_tracks'] = r.json().get('total_tracks')
         print(r.json().get('total_tracks'))
         tdi['id'] = album.get('id')
