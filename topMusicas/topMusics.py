@@ -1,6 +1,9 @@
 import requests
 import json
 import pandas as pd
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
 
@@ -11,9 +14,9 @@ URL_SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token"
 URL_TRACKS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/top-tracks'
 
 data = {
-    "grant_type": "client_credentials",
-    "client_id": "8aa217ba6aa641ba9999fc9383cfe260",
-    "client_secret": "0e8f0ab115e24fdba239455799da14f1"
+    "grant_type": os.environ.get("client_credentials"),
+    "client_id": os.environ.get("client_id"),
+    "client_secret": os.environ.get("client_secret")
 }
 
 response = requests.post(URL_SPOTIFY_TOKEN, data=data)

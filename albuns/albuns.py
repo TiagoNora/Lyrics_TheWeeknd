@@ -1,6 +1,9 @@
 import requests
 import json
 import pandas as pd
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 URL_SPOTIFY_BASE = "https://api.spotify.com/v1/"
 
@@ -13,9 +16,9 @@ URL_TRACKS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/top-tracks'
 URL_ALBUNS = URL_SPOTIFY_BASE + 'artists/1Xyo4u8uXC1ZmMpatF05PJ/albums'
 
 data = {
-    "grant_type": "client_credentials",
-    "client_id": "8aa217ba6aa641ba9999fc9383cfe260",
-    "client_secret": "0e8f0ab115e24fdba239455799da14f1"
+    "grant_type": os.environ.get("client_credentials"),
+    "client_id": os.environ.get("client_id"),
+    "client_secret": os.environ.get("client_secret")
 }
 
 response = requests.post(URL_SPOTIFY_TOKEN, data=data)
@@ -44,17 +47,27 @@ dataAlbum = {
 responseAlbuns = requests.get(URL_ALBUNS,headers=headers, params=dataAlbum)
 
 albunsJson = responseAlbuns.json().get('items')
+print(albunsJson)
 
 albuns = []
 
+lista = [
+    'Deluxe',
+    'Live At SoFi Stadium',
+    '(Alternate World)',
+    'Avatar: The Way of Water (Original Motion Picture Soundtrack)'
+
+]
+
 for album in albunsJson:
     tdi = {}
-    if "Deluxe" in album.get('name'):
+    if any(album.get('name') in s for s in lista):
         continue
     tdi['id'] = album.get('id')
     tdi['name'] = album.get('name')
     print(album.get('name'))
     albuns.append(tdi)
+print(albuns)
 
 tabela = []
 
