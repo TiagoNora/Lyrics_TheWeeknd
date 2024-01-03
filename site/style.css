@@ -1,5 +1,9 @@
+@font-face {
+    font-family: study-alone;
+    src: url(./StudyAlone.otf);
+}
 body {
-    font-family: sans-serif;
+    font-family: study-alone;
     margin: 0;
     padding: 0;
   }
