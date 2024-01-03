@@ -33,6 +33,12 @@
   src: url(./Dosis-VariableFont_wght.ttf);
 }
 
+@font-face {
+  font-family: all;
+  src: url(./Allrightsreserved.ttf);
+}
+
+
 body {
     margin: 0;
     padding: 0;
@@ -155,6 +161,13 @@ body {
     display: block;
     margin-bottom: 10px; /* Adjust spacing between image and text */
     border-radius: 50%;
+}
+
+.title h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  font-family: all;
 }
 
 
