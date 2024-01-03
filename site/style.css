@@ -18,10 +18,25 @@
     src: url(./TypoSlabIrregularDemo.otf);
 }
 
+@font-face {
+    font-family: typoregular;
+    src: url(./Typo_Round_Regular_Demo.otf);
+}
+
+@font-face {
+    font-family: rubik;
+    src: url(./RubikDoodleShadow-Regular.ttf);
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: typo1;
+    font-family: rubik;
+  }
+
+  .centered-paragraph {
+    text-align: center;
+    width: 60%;
   }
   
   header {
@@ -33,10 +48,12 @@ body {
     margin-bottom: 20px;
     
   }
+
   
   h1 {
     font-size: 50px;
     font-weight: bold;
+    text-align: center;
   }
   
   main {
@@ -93,6 +110,10 @@ body {
     margin-top: 100px;
 }
 
+.image-container p{
+    width: 70%;
+}
+
 .image-with-text img {
     width: 100%; /* Ajuste o tamanho conforme necessário */
     height: auto; /* Mantenha a proporção original da imagem */
@@ -117,3 +138,5 @@ body {
     margin-bottom: 10px; /* Adjust spacing between image and text */
     border-radius: 50%;
 }
+
+
