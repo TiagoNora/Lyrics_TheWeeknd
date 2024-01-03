@@ -2,22 +2,28 @@
     font-family: study-alone;
     src: url(./StudyAlone.otf);
 }
+
+@font-face {
+    font-family: browood;
+    src: url(./Browood-Regular.ttf);
+}
+
 body {
-    font-family: study-alone;
+    font-family: browood;
     margin: 0;
     padding: 0;
   }
   
   header {
-    background-color: purple;
-    padding: 20px;
+    background-color: #5c619c;
+    padding: 10px;
     text-align: center;
     color: white;
     
   }
   
   h1 {
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
   }
   
