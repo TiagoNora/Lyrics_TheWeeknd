@@ -132,8 +132,21 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.text1-container {
+  display: flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
-  margin-top: 100px;
+}
+
+.text1-container p{
+  width: 70%;
+  font-size: 20px;
 }
 
 .text-container p{
@@ -159,8 +172,35 @@ body {
     padding: 20px;
 }
 
+.about1container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about2container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .aboutcolumn {
     width: 50%; /* Adjust the width as needed */
+}
+
+.about2column {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.about2column img {
+  width: 10%;
+  height: auto;
+  display: block;
+  margin-bottom: 50px; /* Adjust spacing between image and text */
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
 }
 
 .aboutcolumn p{
@@ -177,6 +217,22 @@ body {
     margin-right: auto;
 }
 
+.about1column {
+  width: 50%; /* Adjust the width as needed */
+}
+
+.about1column p{
+font-size: 20px;
+}
+
+.about1column img {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title h1 {
   font-size: 80px;
   font-weight: bold;
@@ -185,6 +241,8 @@ body {
   margin-top: 100px;
 }
 
+
+
 .perguntaTitulo h1 {
   font-size: 50px;
   font-family: rubikRegular;
@@ -192,6 +250,35 @@ body {
   text-align: center;
   font-family: all;
   margin-top: 100px;
+}
+
+.metTitulo h1 {
+  font-size: 50px;
+  font-family: dosis;
+  font-weight: bold;
+  text-align: center;
+  font-family: all;
+  margin-top: 100px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  margin-top: 100px
+}
+
+.top1-left {
+  position: absolute;
+  top: 30px;
+  left: 16px;
+  margin-top: 100px
+}
+
+.containerFooter {
+  position: relative;
+  text-align: center;
+  color: white;
 }
 
 
