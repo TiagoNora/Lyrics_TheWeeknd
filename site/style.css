@@ -38,6 +38,12 @@
   src: url(./Allrightsreserved.ttf);
 }
 
+@font-face {
+  font-family: rubikRegular;
+  src: url(./RubikGlitch-Regular.ttf);
+}
+
+
 
 body {
     margin: 0;
@@ -168,6 +174,15 @@ body {
 
 .title h1 {
   font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  font-family: all;
+  margin-top: 100px;
+}
+
+.perguntaTitulo h1 {
+  font-size: 50px;
+  font-family: rubikRegular;
   font-weight: bold;
   text-align: center;
   font-family: all;
