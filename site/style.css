@@ -138,6 +138,7 @@ body {
 
 .text-container p{
     width: 70%;
+    font-size: 20px;
 }
 
 .image-with-text img {
@@ -162,6 +163,10 @@ body {
     width: 50%; /* Adjust the width as needed */
 }
 
+.aboutcolumn p{
+  font-size: 20px;
+}
+
 .aboutcolumn img {
     width: 75%;
     height: auto;
@@ -173,7 +178,7 @@ body {
 }
 
 .title h1 {
-  font-size: 50px;
+  font-size: 80px;
   font-weight: bold;
   text-align: center;
   font-family: all;
