@@ -52,7 +52,7 @@ body {
   
   header {
     background-color: #5c619c;
-    font-family: browood;
+    font-family: all;
     padding: 10px;
     text-align: center;
     color: white;
@@ -118,7 +118,7 @@ body {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .text-container {
@@ -135,13 +135,14 @@ body {
 }
 
 .image-with-text img {
-    width: 100%; /* Ajuste o tamanho conforme necessário */
+    width: 90%; /* Ajuste o tamanho conforme necessário */
     height: auto; /* Mantenha a proporção original da imagem */
     margin-bottom: 5px; /* Espaço entre a imagem e o texto */
 }
 
 .image-with-text p {
   text-align: center;
+  font-weight: bold;
 }
 
 .aboutcontainer {
@@ -156,11 +157,13 @@ body {
 }
 
 .aboutcolumn img {
-    width: 100%;
+    width: 75%;
     height: auto;
     display: block;
-    margin-bottom: 10px; /* Adjust spacing between image and text */
+    margin-bottom: 50px; /* Adjust spacing between image and text */
     border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title h1 {
@@ -168,6 +171,7 @@ body {
   font-weight: bold;
   text-align: center;
   font-family: all;
+  margin-top: 100px;
 }
 
 
